@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+    .fa-close:hover{
+        font-size: 18px;
+    }
+
+    .fa-check:hover{
+        font-size: 18px;
+        
+    }
+    body{
+      background-color: honeydew;
+    }
+</style>
+
+<div class="container mt-md-5">
+    {% if value %}
+    <table id="example" class="table table-dark table-striped bg-dark" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Contact</th>
+                <th class="text-center">BloodGroup</th>
+                <th class="text-center">Accept</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in value %}
+            <tr>
+                <td class="text-center" style="padding-top: 2%;">{{i.name}}</td>
+                <td class="text-center" style="padding-top: 2%;">{{i.contact}}</td>
+                <td class="text-center" style="padding-top: 2%;">{{i.bloodgroup}}</td>
+                <!-- <td class="text-center" style="padding-top: 2%;">{{i.accept}}</td> -->
+                <!-- <td class="text-center"> -->
+                    <!-- <div class="d-flex justify-content-center">
+                        <img src="media/{{i.container}}" alt="" class="img-fluid" style="max-height: 50px;">
+                    </div> -->
+                <!-- </td> -->
+                <td class="text-center" style="padding-top: 2%;">
+                    <div class="">
+                        <!-- <a href="status/True/{{i.id}}" style="margin: 5%;"> -->
+                        <a href="{% url 'notify' value='True' id=i.id %}" style="margin: 5%;">
+
+                            <i class="fa fa-check" style="color:rgb(0, 255, 0);"></i>
+                        </a>
+                        <a href="{% url 'notify' value='False' id=i.id %}" style="margin: 5%;">
+
+                            <i class="fa fa-close" style="color:rgb(255, 0, 0);"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <table id="example" class="table table-dark table-striped bg-dark mb-5" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Contact</th>
+                <th class="text-center">BloodGroup</th>
+                <th class="text-center">Accept</th>
+            </tr>
+        </thead>
+    </table>
+    <p class="text-center lead"><b> There Are No Notifications Received. </b></p>
+    {% endif %}
+</div>
+
+<!-- <button class="btn btn-primary">success</button> -->
+
+
+<script>
+    new DataTable('#example');
+</script>
+
+{% endblock content %}

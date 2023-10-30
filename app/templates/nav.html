@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+{% block content %}
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-family:Georgia, serif; font-size: 25px; ">Blood Bank</a>
+      <button onclick="right()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav ">
+            <li class="nav-item " style="font-family:Georgia, serif;">
+                <a href="{% url 'home' %}" class="nav-link {{home}}">Home</a>
+            </li>
+            
+            {% if user.is_authenticated %}
+
+            <li class="nav-item  " style="font-family:Georgia, serif;">
+                <a href="{% url 'Accept'%}" class="nav-link {{notify}}">Notification</a>
+
+            </li>
+            <li class="nav-item" style="font-family:Georgia, serif;">
+                <a href="add_blood"  class="nav-link {{notify}} " class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notify">Add blood</a>
+            </li>
+
+            <li class="nav-item" style="font-family:Georgia, serif;">
+                <a href="/logout_view" class="nav-link ">Log out</a>
+            </li>
+            {% else %}
+            <li class="nav-item" style="font-family:Georgia, serif;">
+                <a href="/signup" class="nav-link {{regs}}">Register</a>
+            </li>
+
+            <li class="nav-item" style="font-family:Georgia, serif;">
+                <a href="/login_view" class="nav-link {{log}}">Login</a>
+            </li>
+           
+
+            {% endif %}
+        </ul>
+    </div>
+    </div>
+  </nav>
+
+  <div class="modal fade" id="notify" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">ADD</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="{% url 'add_blood'%}">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">location</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" name='loc' >
+                  </div>
+            
+                
+              <div class="mb-3">
+              <label for="blood">Choose a blood group:</label>
+
+                <select id="blood" name="blood">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-" selected>AB-</option>
+                </select>
+              </div>
+
+              
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}
+
+</body>
+</html>

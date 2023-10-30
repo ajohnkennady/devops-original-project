@@ -1,0 +1,141 @@
+
+{% extends 'main.html'%}
+{% block content %}
+{% load static %}
+
+<style>
+  body{
+    background-image: url('{% static "blood3.jpg"%}');
+    
+  }
+  .container{
+    background-color:aliceblue;
+    
+    width: 70%;
+    height: 50%;
+    margin-top: 5%;
+    
+  }
+  .h-name{
+    color: white;
+    background-color: rgb(13,110,253);
+    padding-left: 30%;
+    
+ 
+  }
+.hd{
+  color: rgb(11, 11, 11);
+  text-align: center;
+  margin-top: 5%;
+}
+.group{
+  width: 90%;
+  height: 50%;
+  margin: 10% 0 10% 30%;
+
+  
+}
+.group button{
+  width: 80px;
+  margin-bottom: 5px;
+
+}
+
+.bt{
+  margin-left: 45%;
+  margin-bottom: 5%;
+}
+</style>
+
+
+<div class="container" style="padding: 0;">
+        <div class="d-flex flex-column">
+            <div class="h-name">
+            
+                <h1>HOSPITAL NAME</h1>
+              </div>
+                <div class="hd">
+                <h4  style="text-transform: uppercase;">{{hname.user.hospitalname}}</h4>
+               
+              </div>
+              <!-- <div class="bl text-center" >
+                <h5 style="color: red; background-color: black; width: 17%; margin-left: 40%;">
+                  Available Bloods
+                </h5>
+              </div> -->
+            
+            <div class="group">
+              <div class="bl text-center" >
+                <h5 style="color: red; background-color: black; width: 30%; margin-left: 5%;">
+                  Available Bloods
+                </h5>
+              </div>
+                <button disabled style="background: transparent; background-color: {{Ap}}; border: 1px solid {{Ap}}">A+</button>
+                <button disabled style="background: transparent; background-color: {{An}};border: 1px solid {{An}}">A-</button>
+                <button disabled style="background: transparent;background-color: {{Bp}};border: 1px solid {{Bp}}">B+</button>
+                <button disabled style="background: transparent;background-color: {{Bn}};border: 1px solid {{Bn}}">B-</button><br>
+                <button disabled style="background: transparent;background-color: {{Op}};border: 1px solid {{Op}}">O+</button>
+                <button disabled style="background: transparent;background-color: {{On}};border: 1px solid {{On}}">O-</button>
+                <button disabled style="background: transparent;background-color: {{ABp}};border: 1px solid {{ABp}}">AB+</button>
+                <button disabled style="background: transparent;background-color: {{ABn}};border: 1px solid {{ABn}}">AB-</button>
+            </div>
+            <div class="bt">
+                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#example" >Request Raise</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">User Details</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'Rise'%}">
+
+                    {% csrf_token %}
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Name</label>
+
+                    <input type="text" class="form-control" id="formGroupExampleInput" name="nm" >
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Contact</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" name='contact' >
+                  </div>
+                  <div class="mb-3">
+                    <!-- <label for="formGroupExampleInput" class="form-label"></label> -->
+                    <input type="textbox" class="form-control" id="formGroupExampleInput" name="text" value="{{hname.user.id}}" style="display:none" >
+                  </div>
+                  <div class="mb-3">
+                  <label for="blood">Choose a blood group:</label>
+
+                    <select id="blood" name="bloodname">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-" selected>AB-</option>
+                    </select>
+                  </div>
+
+                  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+
+      
+
+{% endblock %}

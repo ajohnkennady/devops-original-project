@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% load static %}
+<style>
+    .card{
+        cursor: pointer;
+        padding: 3%;
+    }
+    body{
+        background-image: url('{% static "blood2.jpg"%}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+    .cl{
+        margin: 5% 10%;
+
+    }
+</style>
+
+{% if location %}
+
+<div class="cl">
+{% for i in location %}
+<a href="{% url 'details' userId=i.user_id location=i.loaction %}" style="text-decoration: none;">
+
+<div class="card">
+    <!-- {{i.user}} -->
+    <div class="row">
+        <div class="col-4">
+            <h3>Hospitalname:</h3><p>{{i.user.hospitalname}}</p>
+        </div>
+        <div class="col-4">
+            <h3>Location: </h3><p>{{i.loaction}}</p>
+        </div>
+        <!-- <div class="col-4">
+            <h3>Blood Groups Availabel:</h3>
+        </div> -->
+    </div>
+</div>
+</a>
+
+{% endfor %}
+</div>
+
+
+
+
+{% else %}
+<form action="location" method="post">
+    {%  csrf_token %}
+    <div class="container-fluid" >
+        <div class="d-flex flex-column" style="width: 50%; margin-left: 24%; margin-top: 10%;" >
+            <input type="text" name="search" placeholder="Search Location here...">
+        </div>
+        <div class="d-flex justify-content-center">    
+            <button type="submit" class="btn btn-primary" style="width: 200px; margin-top: 6%;">Search</button>
+        </div>
+    </div>
+</form>
+
+{% endif %}
+
+<script>
+    function go(username, loc){
+        // console.log(id)  
+        window.location.href = `/details/${username}?loc=${loc}`;
+    }
+</script>
+
+{% endblock content %}
