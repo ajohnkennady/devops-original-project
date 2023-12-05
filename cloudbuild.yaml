@@ -4,6 +4,12 @@ steps:
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "--user"]
 
+ # Python Build
+  - name: python
+    entrypoint: python
+    args: ["-m", "build"]
+  # [END cloudbuild_python_package_yaml]
+
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build','-t','us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}', '.']
