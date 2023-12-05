@@ -1,8 +1,5 @@
 steps:
--name:'gcr.io/cloud-builders/git'
- args:['clone','https://source.developers.google.com/p/blood-407214/r/github_ajohnkennady_devops-original-project']
-
-- name: gcr.io/cloud-builders/gcloud
+- name: 'gcr.io/cloud-builders/gcloud'
     id: Trigger application image build
     args:
       - beta
