@@ -5,6 +5,9 @@
         COPY /blood /application
         COPY ./requirements.txt /application
         COPY ./manage.py /application
+
+        RUN python -m venv venv
+        RUN /bin/bash -c "source venv/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
-        RUN pip install blood
+        ENV NAME blood
         RUN python ./manage.py runserver
