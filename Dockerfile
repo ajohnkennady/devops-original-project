@@ -10,4 +10,4 @@
         RUN /bin/bash -c "source venv/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
         ENV NAME blood
-        RUN python ./manage.py runserver
+       CMD ["python", "./manage.py", "runserver"]
