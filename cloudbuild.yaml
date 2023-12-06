@@ -3,27 +3,7 @@ steps:
   - name: python
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "--user"]
-  # Docker Build
+
+     # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build','-t','gcr.io/blood-407214/image-name:latest']
-
-  # Docker push to Google Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${SHORT_SHA}']
-
-  # Deploy to Cloud Run
-  - name: google/cloud-sdk
-    args: ['gcloud', 'run', 'deploy', 'helloworld-${SHORT_SHA}', 
-           '--image=global-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}', 
-           '--region', 'global', '--platform', 'managed', 
-           '--allow-unauthenticated']
-
-# Save test logs to Google Cloud Storage
-artifacts:
-  objects:
-    location: gs://${_BUCKET_NAME}/
-    paths:
-      - ${SHORT_SHA}_test_log.xml
-# Store images in Google Artifact Registry 
-images:
-  - global-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA', '.']
