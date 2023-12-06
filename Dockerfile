@@ -10,4 +10,5 @@
         RUN /bin/bash -c "source venv/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
         ENV NAME blood
-       CMD ["python", "./manage.py", "runserver"]
+        EXPOSE 8000
+        CMD ["python", "./manage.py", "runserver"]
