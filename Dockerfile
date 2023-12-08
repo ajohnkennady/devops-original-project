@@ -15,5 +15,6 @@
         ENV PORT 8080
         ENV HOST 0.0.0.0
         CMD ["python", "./manage.py", "runserver"]
+        ENV DJANGO_SETTINGS_MODULE=blood.settings
         ARG TIMEOUT=1600
         
