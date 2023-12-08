@@ -7,9 +7,8 @@
         COPY ./manage.py /application
 
         
-         # Run the 'blood' script
-        
-        RUN /bin/bash -c "source application/blood/bin/activate"
+        RUN python -m venv blood
+        RUN /bin/bash -c "source blood/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
         ENV NAME blood
         EXPOSE 8080
