@@ -4,7 +4,7 @@
         COPY /app /application
         COPY /blood /application
         COPY ./requirements.txt /application
-        
+        COPY /blood/settings /application/blood
 
         RUN pip install --no-cache-dir -r /application/requirements.txt
         
