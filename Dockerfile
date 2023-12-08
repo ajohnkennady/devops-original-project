@@ -7,7 +7,7 @@
         COPY ./manage.py /application
 
         
-        RUN chmod +x blood
+        RUN chmod +x /application/blood
 
          # Run the 'blood' script
         CMD ["./application/blood"]
