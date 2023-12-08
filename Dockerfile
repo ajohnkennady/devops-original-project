@@ -12,6 +12,6 @@
         ENV PORT 8080
         ENV HOST 0.0.0.0
         
-        CMD ["/bin/bash", "-c", "source blood/blood/Scripts/activate.bat && python manage.py runserver 0.0.0.0:8000"]
+        CMD ["/bin/bash", "-c", "source blood/Scripts/activate.bat && python manage.py runserver 0.0.0.0:8000"]
         ARG TIMEOUT=1600
         
