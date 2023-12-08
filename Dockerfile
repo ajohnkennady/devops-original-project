@@ -7,8 +7,6 @@
         COPY ./manage.py /application
 
         
-        RUN chmod +x /application/blood
-
          # Run the 'blood' script
         CMD ["./application/blood"]
         RUN /bin/bash -c "source blood/bin/activate"
