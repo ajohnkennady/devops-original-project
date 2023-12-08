@@ -1,12 +1,12 @@
  # syntax=docker/dockerfile:1
         FROM python:3.8.13-slim-bullseye
-        WORKDIR /application
-        COPY /app /application
-        COPY /blood /application
-        COPY ./requirements.txt /application
-        COPY /blood/settings.py /application/blood
+        WORKDIR /app
+        COPY /app /app
+        COPY /blood /app
+        COPY ./requirements.txt /app
+        COPY /blood/settings.py /app/blood
 
-        RUN pip install --no-cache-dir -r /application/requirements.txt
+        RUN pip install --no-cache-dir -r /app/requirements.txt
         
         EXPOSE 8080
         ENV PORT 8080
