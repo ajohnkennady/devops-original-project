@@ -7,5 +7,6 @@ steps:
 
  # This step will deploy the new container image to cloud run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'blood', '--image=gcr.io/$PROJECT_ID/blood', '--region=europe-west2', '--allow-unauthenticated', '--to-revision=REVISION_ID']
-
+  args: ['run', 'deploy', 'blood', '--image=gcr.io/$PROJECT_ID/blood', '--region=europe-west2', '--allow-unauthenticated', '--to-revision=1']
+  env: 
+   -'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'
