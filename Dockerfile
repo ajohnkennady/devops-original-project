@@ -7,11 +7,11 @@
         COPY ./manage.py /application
 
         RUN pip install --no-cache-dir -r /application/requirements.txt
-        ENV NAME blood
+        
         EXPOSE 8080
         ENV PORT 8080
         ENV HOST 0.0.0.0
         
-        CMD ["python", "./manage.py", "runserver"]
+        CMD ["/bin/bash", "-c", "source blood/bin/activate && python manage.py runserver 0.0.0.0:8000"]
         ARG TIMEOUT=1600
         
