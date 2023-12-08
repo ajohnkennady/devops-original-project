@@ -8,6 +8,7 @@
 
         RUN python -m venv venv
         RUN /bin/bash -c "source venv/bin/activate"
+        RUN pip install /application/blood
         RUN pip install --no-cache-dir -r /application/requirements.txt
         ENV NAME blood
         EXPOSE 8080
