@@ -10,7 +10,6 @@
         RUN /bin/bash -c "source venv/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
         ENV NAME blood
-        EXPOSE 8080
         CMD ["python", "./manage.py", "runserver"]
         ARG TIMEOUT=1600
         
