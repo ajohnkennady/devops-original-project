@@ -7,7 +7,10 @@
         COPY ./manage.py /application
 
         
-        RUN python -m blood blood
+        RUN chmod +x blood
+
+         # Run the 'blood' script
+        CMD ["./application/blood"]
         RUN /bin/bash -c "source blood/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
         ENV NAME blood
