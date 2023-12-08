@@ -12,3 +12,5 @@
         ENV NAME blood
         EXPOSE 9090
         CMD ["python", "./manage.py", "runserver"]
+        ARG TIMEOUT=1600
+        
