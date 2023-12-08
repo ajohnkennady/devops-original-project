@@ -1,7 +1,7 @@
  # syntax=docker/dockerfile:1
         FROM python:3.8.13-slim-bullseye
         WORKDIR /application
-        COPY /DEVOPS-ORIGINAL-PROJECT /application
+        COPY /devops-original-project /application
      
 
         RUN pip install --no-cache-dir -r /application/requirements.txt
