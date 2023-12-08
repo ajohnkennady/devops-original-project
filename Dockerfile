@@ -6,9 +6,6 @@
         COPY ./requirements.txt /application
         COPY ./manage.py /application
 
-        ENV DJANGO_SETTINGS_MODULE=blood.settings
-        RUN python -m venv blood
-        RUN /bin/bash -c "source blood/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
         ENV NAME blood
         EXPOSE 8080
