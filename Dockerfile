@@ -6,7 +6,7 @@
         COPY ./requirements.txt /application
         COPY ./manage.py /application
 
-        
+        ENV DJANGO_SETTINGS_MODULE=blood.settings
         RUN python -m venv blood
         RUN /bin/bash -c "source blood/bin/activate"
         RUN pip install --no-cache-dir -r /application/requirements.txt
@@ -14,6 +14,7 @@
         EXPOSE 8080
         ENV PORT 8080
         ENV HOST 0.0.0.0
+        
         CMD ["python", "./manage.py", "runserver"]
         ARG TIMEOUT=1600
         
