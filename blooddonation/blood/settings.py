@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'db',
         'USER': 'root',
         'PASSWORD': 'blood@123',
-        'HOST': '34.173.76.213',
+        'HOST': '35.202.204.74',
         'PORT':'3306',
         'OPTIONS': {
             'charset': 'utf8mb4',
