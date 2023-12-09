@@ -3,8 +3,7 @@
         WORKDIR /application
        
         COPY /blooddonation /application
-        COPY ./requirements.txt /application
-        
+        COPY ./requirements.txt /application        
         
         RUN pip install --no-cache-dir -r /application/requirements.txt
         
