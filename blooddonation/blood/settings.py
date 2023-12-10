@@ -89,18 +89,10 @@ AUTH_USER_MODEL = 'app.Hospital'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db',
-        'USER': 'root',
-        'PASSWORD': 'blood@123',
-        'HOST': '34.28.17.185',
-        'PORT':'3306',
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
