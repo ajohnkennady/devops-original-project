@@ -1,5 +1,9 @@
 gunicorn==20.1.0
-Django==4.2.6
+Django==3.2
 asgiref==3.7.2
 tzdata==2023.3
 sqlparse==0.4.4
+mysqlclient==2.2.0
+
+
+
