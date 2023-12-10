@@ -79,14 +79,14 @@ AUTH_USER_MODEL = 'app.Hospital'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'db',
         'USER': 'root',
         'PASSWORD': 'blood@123',
-        'HOST': '35.202.204.74',
-        'PORT':'3306',
+        'HOST': '34.28.3.29',
+        'PORT':'5432',
         'OPTIONS': {
-            'charset': 'utf8mb4',
+            'client_encoding': 'utf8mb4',
         },
     }
 }
